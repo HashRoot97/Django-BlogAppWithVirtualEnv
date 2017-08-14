@@ -28,13 +28,13 @@ def post_detail(request, id):
 
 
 def post_list(request):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by("-timestamp")
     context = {
         "object_list": queryset,
         "title": "List",
     }
 
-    return render(request, "index.html", context)
+    return render(request, "post_list.html", context)
 
 
 def post_update(request, id=None):
